@@ -4,10 +4,10 @@ AUTHORS="Thomas Qvarnstrom, Red Hat <tqvarnst@redhat.com>"
 SRC_DIR=./installs
 JBDS=jbdevstudio-product-universal-7.1.1.GA-v20140314-2145-B688.jar
 MVN_REPO=./target/local_mvn_repos
-REPOS=(jboss-eap-6.3.0-maven-repository.zip jboss-datagrid-6.3.0-maven-repository.zip)
-EAP_MVN_REPO=jboss-eap-6.3.0-maven-repository.zip
-JDG_SERVER=jboss-datagrid-6.3.0-server.zip
-JDG_MVN_REPO=jboss-datagrid-6.3.0-maven-repository.zip
+REPOS=(jboss-eap-7.1.0-maven-repository.zip jboss-datagrid-7.2.0-maven-repository.zip)
+EAP_MVN_REPO=jboss-eap-7.1.0-maven-repository.zip
+JDG_SERVER=jboss-datagrid-7.2.0-server.zip
+JDG_MVN_REPO=jboss-datagrid-7.2.0-maven-repository.zip
 
 
 # wipe screen.
@@ -96,11 +96,11 @@ echo "Generating settings.xml from the current location"
 echo "  - either copy this to ~/.m2/ or use with mvn -s <path to settingsfile>"
 cp example-settings.xml target/settings.xml
 
-pushd $MVN_REPO/jboss-datagrid-6.3.0-maven-repository > /dev/null
+pushd $MVN_REPO/jboss-datagrid-7.2.0-maven-repository > /dev/null
 jdg_mvn_repo_path=`pwd`
 popd > /dev/null
 
-pushd $MVN_REPO/jboss-eap-6.3.0.GA-maven-repository > /dev/null
+pushd $MVN_REPO/jboss-eap-7.1.0.GA-maven-repository > /dev/null
 eap63_mvn_repo_path=`pwd`
 popd > /dev/null
 
@@ -108,10 +108,10 @@ if [ "$(uname)" =  "Linux" ]
 then 
 	echo "Using Linux style sed commands"
 	sed -i "s;file:///path/to/repo/jboss-datagrid-maven-repository;file://${jdg_mvn_repo_path};g" target/settings.xml
-	sed -i "s;file:///path/to/repo/jboss-eap-6.3.0.GA-maven-repository;file://${eap63_mvn_repo_path};g" target/settings.xml
+	sed -i "s;file:///path/to/repo/jboss-eap-7.1.0.GA-maven-repository;file://${eap63_mvn_repo_path};g" target/settings.xml
 else
 	sed -i '' "s;file:///path/to/repo/jboss-datagrid-maven-repository;file://${jdg_mvn_repo_path};g" target/settings.xml
-	sed -i '' "s;file:///path/to/repo/jboss-eap-6.3.0.GA-maven-repository;file://${eap63_mvn_repo_path};g" target/settings.xml
+	sed -i '' "s;file:///path/to/repo/jboss-eap-7.1.0.GA-maven-repository;file://${eap63_mvn_repo_path};g" target/settings.xml
 fi
 
 echo "Done setting up environment"
