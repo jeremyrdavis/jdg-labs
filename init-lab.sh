@@ -1,19 +1,19 @@
 #!/bin/bash 
 DEMO="JDG Workshop Labs - Server environment"
 AUTHORS="Thomas Qvarnstrom, Red Hat, @tqvarnst"
-JBOSS_HOME=./target/jboss-eap-6.3
-JDG_HOME=./target/jboss-datagrid-6.3.0-server
-JDG_ONE_HOME=./target/jboss-datagrid-6.3.0-server-one
-JDG_TWO_HOME=./target/jboss-datagrid-6.3.0-server-two
+JBOSS_HOME=./target/jboss-eap-7.1.0
+JDG_HOME=./target/jboss-datagrid-7.2.0-server
+JDG_ONE_HOME=./target/jboss-datagrid-7.2.0-server-one
+JDG_TWO_HOME=./target/jboss-datagrid-7.2.0-server-two
 SERVER_DIR=$JBOSS_HOME/standalone/deployments/
 SERVER_CONF=$JBOSS_HOME/standalone/configuration/
 SRC_DIR=./installs
-EAP_SERVER=jboss-eap-6.3.0.zip
+EAP_SERVER=jboss-eap-7.1.0.zip
 EAP_SERVER_MD5SUM=
-JDG_SERVER=jboss-datagrid-6.3.0-server.zip
-JDG_LIBRARY_MODUELS=jboss-datagrid-6.3.0-eap-modules-library.zip
-HOTROD_MODULES=jboss-datagrid-6.3.0-eap-modules-hotrod-java-client.zip
-
+JDG_SERVER=jboss-datagrid-7.2.0-server.zip
+JDG_LIBRARY_MODUELS=jboss-datagrid-7.2.0-eap-modules-library.zip
+HOTROD_MODULES=jboss-datagrid-7.2.0-eap-modules-remote-java-client
+HOTROD_MODULES_ZIP=jboss-datagrid-7.2.0-eap-modules-remote-java-client.zip
 
 function print_header() {
 	# wipe screen.
@@ -51,7 +51,7 @@ function print_usage() {
 
 function setup_eap_with_modules() {
 	# make some checks first before proceeding.	
-	DOWNLOADS=($EAP_SERVER $JDG_LIBRARY_MODUELS $HOTROD_MODULES)
+	DOWNLOADS=($EAP_SERVER $JDG_LIBRARY_MODUELS $HOTROD_MODULES_ZIP)
 	
 	
 	for DONWLOAD in ${DOWNLOADS[@]}
@@ -81,7 +81,7 @@ function setup_eap_with_modules() {
 	EXTRACT_DIR=`pwd`
 	popd >/dev/null
 
-	echo Unpacking new JBoss Enterprise EAP 6...
+	echo Unpacking new JBoss Enterprise EAP 7...
 	echo
 		
 	unzip -q -o -d ${EXTRACT_DIR} $SRC_DIR/$EAP_SERVER
@@ -95,13 +95,13 @@ function setup_eap_with_modules() {
 	echo "Adding JBoss Data Grid Modules to EAP"
 	tmpdir=`mktemp -d XXXXXXXX`
 	unzip -q -d ${tmpdir} ${SRC_DIR}/${JDG_LIBRARY_MODUELS}
-	cp -R ${tmpdir}/jboss-datagrid-6.3.0-eap-modules-library/modules/* $JBOSS_HOME/modules/
+	cp -R ${tmpdir}/jboss-datagrid-7.3.0-eap-modules-library/modules/* $JBOSS_HOME/modules/
 	rm -rf  ${tmpdir} 
 
 	# Adding Hotrod modules to EAP
 	#echo "Adding Hotrod Modules to EAP"
 	#tmpdir=`mktemp -d XXXXXXXX`
-	#unzip -q -d ${tmpdir} ${SRC_DIR}/${HOTROD_MODULES}
+	#unzip -q -d ${tmpdir} ${SRC_DIR}/${HOTROD_MODULES_ZIP}
 	#cp -R ${tmpdir}/jboss-datagrid-6.3.0-eap-modules-hotrod-java-client/modules/* $JBOSS_HOME/modules/
 	#rm -rf  ${tmpdir}  
 	
