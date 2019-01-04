@@ -96,22 +96,24 @@ echo "Generating settings.xml from the current location"
 echo "  - either copy this to ~/.m2/ or use with mvn -s <path to settingsfile>"
 cp example-settings.xml target/settings.xml
 
-pushd $MVN_REPO/jboss-datagrid-7.2.0-maven-repository > /dev/null
+pushd $MVN_REPO/jboss-datagrid-7.2.0-maven-repository/maven-repository > /dev/null
 jdg_mvn_repo_path=`pwd`
 popd > /dev/null
+echo "Setting JDG repository path to ${jdg_mvn_repo_path}"
 
-pushd $MVN_REPO/jboss-eap-7.1.0.GA-maven-repository > /dev/null
-eap63_mvn_repo_path=`pwd`
+pushd $MVN_REPO/jboss-eap-7.1.0.GA-maven-repository/maven-repository > /dev/null
+eap71_mvn_repo_path=`pwd`
 popd > /dev/null
+echo "Setting EAP repository path to ${eap71_mvn_repo_path}"
 
 if [ "$(uname)" =  "Linux" ]
 then 
 	echo "Using Linux style sed commands"
 	sed -i "s;file:///path/to/repo/jboss-datagrid-maven-repository;file://${jdg_mvn_repo_path};g" target/settings.xml
-	sed -i "s;file:///path/to/repo/jboss-eap-7.1.0.GA-maven-repository;file://${eap63_mvn_repo_path};g" target/settings.xml
+	sed -i "s;file:///path/to/repo/jboss-eap-7.1.0.GA-maven-repository;file://${eap71_mvn_repo_path};g" target/settings.xml
 else
 	sed -i '' "s;file:///path/to/repo/jboss-datagrid-maven-repository;file://${jdg_mvn_repo_path};g" target/settings.xml
-	sed -i '' "s;file:///path/to/repo/jboss-eap-7.1.0.GA-maven-repository;file://${eap63_mvn_repo_path};g" target/settings.xml
+	sed -i '' "s;file:///path/to/repo/jboss-eap-7.1.0.GA-maven-repository;file://${eap71_mvn_repo_path};g" target/settings.xml
 fi
 
 echo "Done setting up environment"

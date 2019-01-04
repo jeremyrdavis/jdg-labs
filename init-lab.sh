@@ -1,7 +1,7 @@
 #!/bin/bash 
 DEMO="JDG Workshop Labs - Server environment"
 AUTHORS="Thomas Qvarnstrom, Red Hat, @tqvarnst"
-JBOSS_HOME=./target/jboss-eap-7.1.0
+JBOSS_HOME=./target/jboss-eap-7.1
 JDG_HOME=./target/jboss-datagrid-7.2.0-server
 JDG_ONE_HOME=./target/jboss-datagrid-7.2.0-server-one
 JDG_TWO_HOME=./target/jboss-datagrid-7.2.0-server-two

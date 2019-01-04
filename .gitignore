@@ -5,6 +5,7 @@ workspace
 .classpath
 .project
 .settings
+.factorypath
 .forge_settings
 .installs/*.zip
 org.jboss.infinispan.demo.model.Task
