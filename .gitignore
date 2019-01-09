@@ -10,3 +10,4 @@ workspace
 .installs/*.zip
 org.jboss.infinispan.demo.model.Task
 .tern-project
+.vscode
