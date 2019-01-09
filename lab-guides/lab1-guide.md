@@ -41,7 +41,7 @@ To assist with setting up the lab environment we have provided a shell script th
 
 1. Start the JBoss EAP if not already started in a terminal.
 
-		$ target/jboss-eap-6.3/bin/standalone.sh
+		$ target/jboss-eap-7.1/bin/standalone.sh
 		
 1. In another terminal (on the dev host) change directory to the project
 

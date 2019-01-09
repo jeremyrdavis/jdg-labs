@@ -113,7 +113,7 @@ public class TaskServiceTest {
 		
 		log.info("#### Executeing 1000 reads took " + (stopTime-startTime) + " ms");
 		
-		Assert.assertTrue((stopTime-startTime)<400);
+		Assert.assertTrue("Start time was  " + String.valueOf(stopTime - startTime), (stopTime-startTime)<400);
 	}
 
 }

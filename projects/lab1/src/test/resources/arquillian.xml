@@ -2,7 +2,7 @@
 <arquillian xmlns="http://jboss.org/schema/arquillian"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://jboss.org/schema/arquillian http://jboss.org/schema/arquillian/arquillian_1_0.xsd">
-	<container qualifier="jbossas-remote-7" default="true">
+	<container qualifier="arquillian-jbosseap-remote-7" default="true">
 		<configuration>
 			<property name="managementAddress">localhost</property>
 			<property name="managementPort">9990</property>
