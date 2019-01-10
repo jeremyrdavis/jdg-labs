@@ -11,7 +11,7 @@ SRC_DIR=./installs
 EAP_SERVER=jboss-eap-7.1.0.zip
 EAP_SERVER_MD5SUM=
 JDG_SERVER=jboss-datagrid-7.2.0-server.zip
-JDG_LIBRARY_MODUELS=jboss-datagrid-7.2.0-eap-modules-library.zip
+JDG_LIBRARY_MODULES=jboss-datagrid-7.2.0-eap-modules-library.zip
 HOTROD_MODULES=jboss-datagrid-7.2.0-eap-modules-remote-java-client
 HOTROD_MODULES_ZIP=jboss-datagrid-7.2.0-eap-modules-remote-java-client.zip
 
@@ -51,7 +51,7 @@ function print_usage() {
 
 function setup_eap_with_modules() {
 	# make some checks first before proceeding.	
-	DOWNLOADS=($EAP_SERVER $JDG_LIBRARY_MODUELS $HOTROD_MODULES_ZIP)
+	DOWNLOADS=($EAP_SERVER $JDG_LIBRARY_MODULES $HOTROD_MODULES_ZIP)
 	
 	
 	for DONWLOAD in ${DOWNLOADS[@]}
@@ -94,7 +94,7 @@ function setup_eap_with_modules() {
 	# Adding JBoss Data Grid Library modules to EAP
 	echo "Adding JBoss Data Grid Modules to EAP"
 	tmpdir=`mktemp -d XXXXXXXX`
-	unzip -q -d ${tmpdir} ${SRC_DIR}/${JDG_LIBRARY_MODUELS}
+	unzip -q -d ${tmpdir} ${SRC_DIR}/${JDG_LIBRARY_MODULES}
 	cp -R ${tmpdir}/jboss-datagrid-7.3.0-eap-modules-library/modules/* $JBOSS_HOME/modules/
 	rm -rf  ${tmpdir} 
 

@@ -16,6 +16,7 @@
 		<!-- EAP component version management BOM -->
 		<version.server.bom>7.1.0.GA</version.server.bom>
 		<version.jboss.spec.javaee.7.0>1.1.0.Final-redhat-3</version.jboss.spec.javaee.7.0>
+		<version.infinispan>8.2.8.Final-redhat-1</version.infinispan>
 		<version.surefire.plugin>2.20</version.surefire.plugin>
 		<version.failsafe.plugin>${version.surefire.plugin}</version.failsafe.plugin>
 	</properties>
@@ -62,6 +63,19 @@
 			<groupId>org.jboss.spec.javax.ejb</groupId>
 			<artifactId>jboss-ejb-api_3.2_spec</artifactId>
 			<scope>provided</scope>
+		</dependency>
+		<!-- Hot Rod Client -->
+		<dependency>
+			<groupId>org.infinispan</groupId>
+			<artifactId>infinispan-commons</artifactId>
+			<version>${version.infinispan}</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.infinispan</groupId>
+			<artifactId>infinispan-client-hotrod</artifactId>
+			<version>${version.infinispan}</version>
+			<scope>compile</scope>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
@@ -117,7 +131,7 @@
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.2</version>
 				<configuration>
-					<skip>true</skip>
+					<skip>false</skip>
 					<source>${maven.compiler.source}</source>
 					<target>${maven.compiler.target}</target>
 				</configuration>
