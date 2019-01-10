@@ -121,7 +121,7 @@ Rewrite the application to only use JDG Client Server mode.
 			cache.remove(id);
 		}
 
-1. Save the `TaskServer.java` file
+1. Save the `TaskServerice.java` file
 1. Open `TaskServiceTest.java` and uncomment the the `File[] jars = ....` and `.addAsLibraries(...)`
 1. Run the JUnit test and verify that everything works.
 1. Deploy the application using the following command from lab5 dir

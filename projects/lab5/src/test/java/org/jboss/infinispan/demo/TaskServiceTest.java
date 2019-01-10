@@ -1,5 +1,6 @@
 package org.jboss.infinispan.demo;
 
+import java.io.File;
 import java.util.Collection;
 import java.util.Date;
 import java.util.logging.Logger;
@@ -13,6 +14,7 @@ import org.jboss.infinispan.demo.model.Task;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.asset.EmptyAsset;
 import org.jboss.shrinkwrap.api.spec.WebArchive;
+import org.jboss.shrinkwrap.resolver.api.maven.Maven;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -38,14 +40,14 @@ public class TaskServiceTest {
 	 */
 	@Deployment
 	public static WebArchive createDeployment() {
-//		File[] jars = Maven.resolver().loadPomFromFile("pom.xml").importRuntimeDependencies().resolve().withTransitivity().asFile();
+		File[] jars = Maven.resolver().loadPomFromFile("pom.xml").importRuntimeDependencies().resolve().withTransitivity().asFile();
 		
 		return ShrinkWrap
 				.create(WebArchive.class, "todo-test.war")
 				.addClass(Config.class)
 				.addClass(Task.class)
 				.addClass(TaskService.class)
-//				.addAsLibraries(jars)
+				.addAsLibraries(jars)
 				.addAsWebInfResource(EmptyAsset.INSTANCE, "beans.xml");
 	}
 

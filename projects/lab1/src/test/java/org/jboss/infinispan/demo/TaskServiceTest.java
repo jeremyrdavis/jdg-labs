@@ -29,7 +29,7 @@ public class TaskServiceTest {
 	
 	@Deployment
 	public static WebArchive createDeployment() {
-
+		
 		return ShrinkWrap
 				.create(WebArchive.class, "todo-test.war")
 				.addClass(Config.class)
